@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>교실 활동 타이머</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+  <div class="app-container" id="appContainer">
+    <!-- Top Bar: Title & Utility Buttons -->
+    <header class="top-bar">
+      <div class="header-left">
+        <span class="activity-badge">수업 활동</span>
+        <h1 class="header-title" id="activityTitle" contenteditable="true" title="클릭하여 활동 제목을 직접 수정할 수 있습니다">모둠 활동 시간</h1>
+      </div>
+      <div class="header-right">
+        <button id="soundToggleBtn" class="icon-btn" title="소리 켜기/끄기">
+          <span class="icon" id="soundIcon">🔔</span>
+        </button>
+        <button id="fullscreenBtn" class="icon-btn" title="전체화면 (F11)">
+          <span class="icon">⛶</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Progress Bar (교실 뒤에서도 직관적으로 남은 비율 확인 가능) -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Main Display Section -->
+    <main class="display-section">
+      <!-- Huge Timer Digits -->
+      <div class="timer-display" id="timerDisplay">
+        <span id="timeMinutes">05</span><span class="colon">:</span><span id="timeSeconds">00</span>
+      </div>
+
+      <!-- Time's Up Banner / Message -->
+      <div class="times-up-banner" id="timesUpBanner">
+        <div class="banner-badge">TIME OVER</div>
+        <div class="banner-text">활동 시간이 종료되었습니다!</div>
+        <div class="banner-subtext">진행 중인 활동을 마무리하고 선생님을 바라봐 주세요.</div>
+      </div>
+    </main>
+
+    <!-- Control Section -->
+    <footer class="controls-section">
+      <!-- Presets & Custom Input Row -->
+      <div class="presets-row">
+        <span class="control-label">시간 설정:</span>
+        <button class="preset-btn active" data-minutes="5">5분</button>
+        <button class="preset-btn" data-minutes="10">10분</button>
+        <button class="preset-btn" data-minutes="15">15분</button>
+
+        <div class="custom-input-group">
+          <input type="number" id="customMinutes" min="1" max="180" placeholder="직접입력" title="분 단위 입력">
+          <span class="input-unit">분</span>
+          <button id="applyCustomBtn" class="preset-btn btn-apply">설정</button>
+        </div>
+
+        <div class="quick-adjust-group">
+          <button id="add1MinBtn" class="quick-btn" title="+1분 추가">+1분</button>
+          <button id="sub1MinBtn" class="quick-btn" title="-1분 감소">-1분</button>
+        </div>
+      </div>
+
+      <!-- Action Buttons Row (Start / Pause / Reset) -->
+      <div class="actions-row">
+        <button id="startPauseBtn" class="main-action-btn btn-start">
+          <span class="btn-icon">▶</span>
+          <span class="btn-label" id="startPauseText">시작</span>
+        </button>
+        <button id="resetBtn" class="main-action-btn btn-reset">
+          <span class="btn-icon">↺</span>
+          <span class="btn-label">초기화</span>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
